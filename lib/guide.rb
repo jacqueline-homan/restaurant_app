@@ -1,6 +1,12 @@
 require 'restaurant'
 
 class Guide
+  # You can have a class inside of a class
+  class Config
+    @@actions = ['list', 'find', 'add', 'quit']
+    def self.actions; @@actions; end
+  end
+
   def initialize(path=nil) 
   	# Locate the restaurant text file at that path
     Restaurant.filepath = path
@@ -40,12 +46,26 @@ class Guide
     result = nil
     until result == :quit 
       # what do you want to do? (list, find, add, quit)
-      print "(Enter response or type q to exit)> "
-      user_response = gets.chomp      
+      #print "(Enter response or type q to exit)> "
+      #user_response = gets.chomp      
       # do that action
-      result = do_action(user_response)      
+      action = get_action
+      #result = do_action(user_response)
+      result = do_action(action)      
     end
     conclusion
+  end
+
+  def get_action
+    action = nil
+    # Keep asking for user input until we get valid action
+    until Guide::Config.actions.include?(action)
+      puts "Actions: " + Guide::Config.actions.join(", ") if action
+      print "(Enter response or type quit to exit)> "
+      user_response = gets.chomp
+      action = user_response.downcase.strip
+    end
+    return action   
   end
 
 
@@ -57,7 +77,7 @@ class Guide
       puts "Finding..."
     when 'add'
       puts "Adding..."
-    when 'q'
+    when 'quit'
       return :quit
     else
       puts "\nI don't understand that command.\n"
