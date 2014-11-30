@@ -5,3 +5,5 @@ Molly Brannigan's	Irish pub	20
 Dairy Queen	Fast food ice cream	10
 Cracker Barrel	American	15
 Fisherman's Warf	Seafood	50
+Pufferbelly's	American/Pub	20
+New York Lunch	American/Diner	10

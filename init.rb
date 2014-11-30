@@ -21,7 +21,7 @@ APP_ROOT = File.dirname(__FILE__)
 # require File.join(APP_ROOT, 'lib', 'guide.rb')
 # require File.join(APP_ROOT, 'lib', 'guide')
 
-
+# The best practice for writing the absolute path:
 $: .unshift(File.join(APP_ROOT, 'lib'))
 require 'guide'
 
